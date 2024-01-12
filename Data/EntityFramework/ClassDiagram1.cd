@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GarageSales.Data.EntityFramework.Item">
+    <Position X="11" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAQAAAAAACAAABIAAAgAAAAAAAA=</HashCode>
+      <FileName>Data\EntityFramework\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GarageSales.Data.EntityFramework.ItemLink">
+    <Position X="14.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAKAAMAAA=</HashCode>
+      <FileName>Data\EntityFramework\ItemLink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GarageSales.Data.EntityFramework.LinkType">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Data\EntityFramework\LinkType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GarageSales.Data.EntityFramework.ItemAdminComment">
+    <Position X="16.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Data\EntityFramework\ItemAdminComment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GarageSales.Data.EntityFramework.ImageType">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAABAAAAAAAAAAAAg=</HashCode>
+      <FileName>Data\EntityFramework\ImageType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GarageSales.Data.EntityFramework.Image">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAFAgAIAAAAAA=</HashCode>
+      <FileName>Data\EntityFramework\Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GarageSalesModelStoreContainer" CdmEntityContainer="GarageSalesContext">
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="GarageSalesModel.Image">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="image_id" ColumnName="image_id" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="image_type" ColumnName="image_type" />
+          <ScalarProperty Name="image_name" ColumnName="image_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageTypes">
+      <EntityTypeMapping TypeName="GarageSalesModel.ImageType">
+        <MappingFragment StoreEntitySet="ImageTypes">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="type_name" ColumnName="type_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemAdminComments">
+      <EntityTypeMapping TypeName="GarageSalesModel.ItemAdminComment">
+        <MappingFragment StoreEntitySet="ItemAdminComments">
+          <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+          <ScalarProperty Name="comment_text" ColumnName="comment_text" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemLinks">
+      <EntityTypeMapping TypeName="GarageSalesModel.ItemLink">
+        <MappingFragment StoreEntitySet="ItemLinks">
+          <ScalarProperty Name="link_id" ColumnName="link_id" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="link_type" ColumnName="link_type" />
+          <ScalarProperty Name="link_url" ColumnName="link_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="GarageSalesModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="item_amount" ColumnName="item_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinkTypes">
+      <EntityTypeMapping TypeName="GarageSalesModel.LinkType">
+        <MappingFragment StoreEntitySet="LinkTypes">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="type_name" ColumnName="type_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

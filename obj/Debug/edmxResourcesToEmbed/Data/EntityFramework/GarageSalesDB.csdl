@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GarageSalesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="image_id" />
+    </Key>
+    <Property Name="image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="image_type" Type="Int32" Nullable="false" />
+    <Property Name="image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ImageType" Relationship="Self.FK_Images_ImageType" FromRole="Images" ToRole="ImageTypes" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_Images_Item" FromRole="Images" ToRole="Items" />
+  </EntityType>
+  <EntityType Name="ImageType">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Images_ImageType" FromRole="ImageTypes" ToRole="Images" />
+  </EntityType>
+  <EntityType Name="ItemAdminComment">
+    <Key>
+      <PropertyRef Name="comment_id" />
+    </Key>
+    <Property Name="comment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comment_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_ItemAdminComments_ItemId" FromRole="ItemAdminComments" ToRole="Items" />
+  </EntityType>
+  <EntityType Name="ItemLink">
+    <Key>
+      <PropertyRef Name="link_id" />
+    </Key>
+    <Property Name="link_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="link_type" Type="Int32" Nullable="false" />
+    <Property Name="link_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_ItemLinks_Item" FromRole="ItemLinks" ToRole="Items" />
+    <NavigationProperty Name="LinkType" Relationship="Self.FK_ItemLinks_LinkType" FromRole="ItemLinks" ToRole="LinkTypes" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="item_amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Images_Item" FromRole="Items" ToRole="Images" />
+    <NavigationProperty Name="ItemAdminComments" Relationship="Self.FK_ItemAdminComments_ItemId" FromRole="Items" ToRole="ItemAdminComments" />
+    <NavigationProperty Name="ItemLinks" Relationship="Self.FK_ItemLinks_Item" FromRole="Items" ToRole="ItemLinks" />
+  </EntityType>
+  <EntityType Name="LinkType">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ItemLinks" Relationship="Self.FK_ItemLinks_LinkType" FromRole="LinkTypes" ToRole="ItemLinks" />
+  </EntityType>
+  <Association Name="FK_Images_ImageType">
+    <End Role="ImageTypes" Type="Self.ImageType" Multiplicity="1" />
+    <End Role="Images" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageTypes">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="image_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Images_Item">
+    <End Role="Items" Type="Self.Item" Multiplicity="1" />
+    <End Role="Images" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemAdminComments_ItemId">
+    <End Role="Items" Type="Self.Item" Multiplicity="1" />
+    <End Role="ItemAdminComments" Type="Self.ItemAdminComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="ItemAdminComments">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemLinks_Item">
+    <End Role="Items" Type="Self.Item" Multiplicity="1" />
+    <End Role="ItemLinks" Type="Self.ItemLink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="ItemLinks">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemLinks_LinkType">
+    <End Role="LinkTypes" Type="Self.LinkType" Multiplicity="1" />
+    <End Role="ItemLinks" Type="Self.ItemLink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LinkTypes">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="ItemLinks">
+        <PropertyRef Name="link_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GarageSalesContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Images" EntityType="Self.Image" />
+    <EntitySet Name="ImageTypes" EntityType="Self.ImageType" />
+    <EntitySet Name="ItemAdminComments" EntityType="Self.ItemAdminComment" />
+    <EntitySet Name="ItemLinks" EntityType="Self.ItemLink" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="LinkTypes" EntityType="Self.LinkType" />
+    <AssociationSet Name="FK_Images_ImageType" Association="Self.FK_Images_ImageType">
+      <End Role="ImageTypes" EntitySet="ImageTypes" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Images_Item" Association="Self.FK_Images_Item">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemAdminComments_ItemId" Association="Self.FK_ItemAdminComments_ItemId">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ItemAdminComments" EntitySet="ItemAdminComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemLinks_Item" Association="Self.FK_ItemLinks_Item">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ItemLinks" EntitySet="ItemLinks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemLinks_LinkType" Association="Self.FK_ItemLinks_LinkType">
+      <End Role="LinkTypes" EntitySet="LinkTypes" />
+      <End Role="ItemLinks" EntitySet="ItemLinks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
